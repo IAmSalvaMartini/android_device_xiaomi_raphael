@@ -9,7 +9,9 @@ $(call inherit-product, device/xiaomi/raphael/device.mk)
 # Inherit some common Bliss stuff.
 $(call inherit-product, vendor/bliss/config/common_full_phone.mk)
 TARGET_BOOT_ANIMATION_RES := 1440
-
+$(call inherit-product-if-exists, vendor/gapps/config.mk)
+BLISS_BUILDTYPE=OFFICIAL
+TARGET_GAPPS_ARCH := arm64
 # Device identifier. This must come after all inclusions.
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := raphael
@@ -19,6 +21,3 @@ PRODUCT_NAME := bliss_raphael
 BUILD_FINGERPRINT := "Xiaomi/raphaelin/raphaelin:9/PKQ1.181121.001/V10.3.3.0.PFKINXM:user/release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-# Inherit from custom vendor
-$(call inherit-product, vendor/ANXCamera/config.mk)
